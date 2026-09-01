@@ -143,17 +143,22 @@ h1 {
 }
 
 /* Booking */
-.booking-head { padding: 26px 0 22px; }
+.booking-head { padding: 26px 0 22px; max-width: 700px; margin: 0 auto; }
 .booking-head h1 { font-size: clamp(26px, 4.4vw, 34px); margin-bottom: 8px; }
 .booking-head .lead { font-size: 16px; margin-bottom: 0; }
 
+/* The embed lays itself out to fill the iframe and scrolls internally, so the
+   iframe has to be tall enough for the tallest screen or an inner scrollbar
+   appears. Capping the column at 700px keeps the service list in its compact
+   one-column layout (889px tall) instead of the two-column one (1238px). */
 .booking {
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 6px;
   overflow: hidden;
-  margin-bottom: 56px;
+  max-width: 700px;
+  margin: 0 auto 56px;
 }
 .booking iframe {
   display: block;
@@ -162,8 +167,8 @@ h1 {
   min-height: 940px;
   overflow: hidden !important;
 }
-@media (max-width: 600px) {
-  .booking iframe { min-height: 860px; }
+@media (max-width: 519px) {
+  .booking iframe { min-height: 1010px; }
 }
 
 .back {
@@ -176,6 +181,8 @@ h1 {
 .back:hover { color: var(--ink); }
 
 /* Footer */
+.booking-page .steps { max-width: 700px; margin: 0 auto; }
+
 .site-foot {
   border-top: 1px solid var(--line);
   padding: 22px 0 40px;
