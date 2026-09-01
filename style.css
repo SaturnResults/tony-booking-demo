@@ -70,6 +70,14 @@ body {
   height: 5px;
   border-radius: 50%;
   background: var(--line);
+  flex: none;
+}
+.steps .step { white-space: nowrap; }
+@media (max-width: 620px) {
+  .steps .step:not(.is-on),
+  .steps .dot { display: none; }
+  .steps .is-on::after { content: " (step 1 of 3)"; font-weight: 400; color: var(--muted); }
+  .booking-page .steps .is-on::after { content: " (step 2 of 3)"; }
 }
 
 /* Hero */
