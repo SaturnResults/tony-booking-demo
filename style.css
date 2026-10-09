@@ -170,6 +170,12 @@ h1 {
 @media (max-width: 519px) {
   .booking iframe { min-height: 1010px; }
 }
+/* Give the calendar's day grid its width back on a phone: break the card out
+   of the .wrap gutter down to an 8px inset and drop the inner padding. The
+   20px gutter plus 6px padding was costing 54px of a 375px screen. */
+@media (max-width: 620px) {
+  .booking { margin-inline: -12px; padding: 0; }
+}
 
 .back {
   display: inline-block;
