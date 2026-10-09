@@ -42,5 +42,36 @@
 </footer>
 
 <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
+<script>
+/* form_embed.js parks the iframe off screen (left:-9999px, visibility:hidden)
+   and only reveals it when the widget posts an "iframeLoaded" message. That
+   message is slow: measured live on a phone viewport, the card sat empty for
+   about 23 seconds before the calendar appeared. So reveal it ourselves if
+   the helper has not got there first. Same workaround as the one on the live
+   site's booking page. */
+(function () {
+  var frame = document.querySelector('.booking iframe');
+  if (!frame) return;
+
+  function reveal() {
+    var cs = window.getComputedStyle(frame);
+    if (cs.visibility === 'hidden' || cs.opacity === '0' || frame.style.left === '-9999px') {
+      /* set properties one by one, never cssText, so any height form_embed.js
+         has already applied survives */
+      frame.style.opacity = '1';
+      frame.style.visibility = 'visible';
+      frame.style.pointerEvents = 'auto';
+      frame.style.position = 'relative';
+      frame.style.left = '0';
+      frame.style.display = 'block';
+    }
+  }
+
+  frame.addEventListener('load', function () {
+    setTimeout(reveal, 2500);
+    setTimeout(reveal, 6000);
+  });
+})();
+</script>
 </body>
 </html>
